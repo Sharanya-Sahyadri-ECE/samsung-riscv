@@ -19,9 +19,13 @@ Description: In this task, a C program (sum1ton.c) is written to compute the sum
 Steps:
 Use a text editor (e.g., leafpad) to write a C program that calculates the sum from 1 to n with user input.
 Compile the program using the GCC compiler.
+
 Execute the compiled binary (./a.out) and enter a value for n to compute and display the sum.
+
 The sample program is given by sum1ton.c
+
 ![screenshot](https://github.com/user-attachments/assets/0228d67e-0d82-4530-8159-c5cb614cf1a7)
+
 The task involves creating a simple C program (sum1ton.c) that computes the sum of numbers from 1 to 100.
 
 ## Compiling and Optimizing a Parameterized C Program for RISC-V Architecture
