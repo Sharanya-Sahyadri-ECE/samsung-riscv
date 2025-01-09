@@ -4,8 +4,8 @@ RISC-V Talent Development Program , powered by samsung Semiconductor India Resea
 Name : Sharanya P A <br />
 College: Sahyadri College of Engineering and Management, Mangalore <br />
 Email ID : sharanya.ec22@sahyadri.edu.in <br />
-Github Profile : Sharanya-Sahyadri-ECE <br />
-LinkedIN Profile : Sharanya P A  
+Github Profile : https://github.com/Sharanya-Sahyadri-ECE <br />
+LinkedIN Profile : https://in.linkedin.com/in/sharanya-p-a-259412258  
 <br />
 # Task 1
 ## To install the Essential Tools and Set Up Virtual Machine in VirtualBox:
