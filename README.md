@@ -50,12 +50,10 @@ The following shows the screenshots of optimizations
 
 ![WhatsApp Image 2025-01-13 at 7 16 32 PM (1)](https://github.com/user-attachments/assets/93fa69f3-2350-4b97-9eef-06af1ed4b0bf)
 
-![Uploading WhatsApp Image 2025-01-13 at 7.16.31 PM (1).jpeg…]()
+![WhatsApp Image 2025-01-13 at 7 16 31 PM (1)](https://github.com/user-attachments/assets/666b4c13-7ef4-48b1-8c59-3301a5afb20c)
 
-![Uploading WhatsApp Image 2025-01-13 at 7.16.32 PM (2).jpeg…]()
+![WhatsApp Image 2025-01-13 at 7 16 32 PM](https://github.com/user-attachments/assets/41edcfe3-77b7-4eaf-a64c-83518676c355)
 
-![Uploading WhatsApp Image 2025-01-13 at 7.16.32 PM (2).jpeg…]()
+![WhatsApp Image 2025-01-13 at 7 16 32 PM (1)](https://github.com/user-attachments/assets/fe8be9e1-f8d6-49ff-b6ca-017e354dacd9)
 
-
-
-
+![WhatsApp Image 2025-01-13 at 7 16 32 PM (2)](https://github.com/user-attachments/assets/d3ebe6b0-926f-490a-bd7a-4332a7fb9153)
