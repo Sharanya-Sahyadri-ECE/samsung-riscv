@@ -36,20 +36,24 @@ Steps:
 
 
 
-#Task 2
+# Task 2
 
 ## SPIKE SIMULATION 
-In this task, a C program is developed and which is implemented in RISC-V cross-compiler(riscv64-unkonown-elf-gcc) with optimization flags -O1 and -Ofast.This ensures that the generated code is optimized for execution in a 64-bit RISC-V environment.The output is an object file,which can be executed on a RISC-V-based simulation or hardware platform. This task demonstrates the process of cross-compiling programs for specific hardware architectures.
+This task implements a C program in RISC-V cross-compiler(riscv64-unkonown-elf-gcc) with optimization flags -O1 and -Ofast. This ensures the generated code is optimized for execution in a 64-bit RISC-V environment. The output is an object file, which can be executed on a RISC-V-based simulation or hardware platform. This task demonstrates the process of cross-compiling programs for specific hardware architectures.
 Steps:
 1. Write a Simple C program.
 2. Compile the C program using RISC-V GCC/SPIKE with the optimization
 3. Generate and collect the RISC-V object dump for both -O1 and -Ofast.
 4. observe the different optimizations
 
-Following shows the screenshots of optimizations
+The following shows the screenshots of optimizations
+
 ![WhatsApp Image 2025-01-13 at 7 16 32 PM (1)](https://github.com/user-attachments/assets/93fa69f3-2350-4b97-9eef-06af1ed4b0bf)
+
 ![Uploading WhatsApp Image 2025-01-13 at 7.16.31 PM (1).jpeg…]()
+
 ![Uploading WhatsApp Image 2025-01-13 at 7.16.32 PM (2).jpeg…]()
+
 ![Uploading WhatsApp Image 2025-01-13 at 7.16.32 PM (2).jpeg…]()
 
 
