@@ -59,7 +59,7 @@ The following shows the screenshots of optimizations
 ![WhatsApp Image 2025-01-13 at 7 16 32 PM (2)](https://github.com/user-attachments/assets/d3ebe6b0-926f-490a-bd7a-4332a7fb9153)
 
 
-# Task 
+# Task 3
 ## Step 1: Review RISC-V Documentation
 Open the RISC-V software documentation (provided link) and read about the instruction types:
 R-type: Register-Register operations<br>
