@@ -57,3 +57,61 @@ The following shows the screenshots of optimizations
 ![WhatsApp Image 2025-01-13 at 7 16 32 PM (1)](https://github.com/user-attachments/assets/fe8be9e1-f8d6-49ff-b6ca-017e354dacd9)
 
 ![WhatsApp Image 2025-01-13 at 7 16 32 PM (2)](https://github.com/user-attachments/assets/d3ebe6b0-926f-490a-bd7a-4332a7fb9153)
+
+
+# Task 
+## Step 1: Review RISC-V Documentation
+Open the RISC-V software documentation (provided link) and read about the instruction types:
+R-type: Register-Register operations<br>
+I-type: Immediate operations & Load instructionss<br>
+S-type: Store instructionss<br>
+B-type: Branch instructionss<br>
+U-type: Upper immediate instructionss<br>
+J-type: Jump instructionss<br>
+## Step 2: Explore the Sample GitHub Repository
+Open the Sample Repo and examine the visual representation of instruction decoding.
+
+Understand how instructions are broken down into opcode, funct3, funct7, register fields, and immediate values.
+## Step 3: Obtain riscv-objdump of Your Application Code
+Compile your RISC-V application code into an executable using a GCC toolchain:
+
+riscv64-unknown-elf-gcc -o my_program my_program.c
+Generate the disassembly output using riscv-objdump:
+
+riscv64-unknown-elf-objdump -d my_program > disassembly.txt
+
+Open disassembly.txt and extract 15 unique instructions.
+
+## Step 4: Identify the Instruction Type for Each Instruction
+Determine each extracted instruction's type (R, I, S, B, U, or J).
+You can use the instruction format reference from Step 1.
+## Step 5: Convert Instructions to 32-bit Binary Patterns
+For each instruction:
+
+Identify the opcode, funct3, funct7, source/destination registers, and immediate values.
+Construct the binary format based on the instruction type.
+Convert the binary format into a 32-bit hexadecimal representation.
+Example:
+Instruction: add x5, x6, x7 (R-type)
+
+Opcode: 0110011
+Funct3: 000
+Funct7: 0000000
+Registers: rd = 5, rs1 = 6, rs2 = 7
+32-bit encoding:
+
+
+funct7   rs2   rs1   funct3  rd    opcode  
+0000000  00111 00110 000     00101 0110011  
+
+Converted to Hex: 0x00628333
+## Step 6: Upload to Your GitHub Repository
+Create a text file (riscv_32bit_instructions.txt) containing the binary and hex representations of the 15 instructions.
+Use Git commands to upload:
+
+git clone <your-repo-link>  <br>
+cd <your-repo>
+echo "Instruction - 32-bit Binary - Hex" > riscv_32bit_instructions.txt
+git add riscv_32bit_instructions.txt
+git commit -m "Added 32-bit RISC-V instruction encoding"
+git push origin main
