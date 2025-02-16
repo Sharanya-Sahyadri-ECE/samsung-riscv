@@ -5,7 +5,7 @@ Name : Sharanya P A <br />
 College: Sahyadri College of Engineering and Management, Mangalore <br />
 Email ID : sharanya.ec22@sahyadri.edu.in <br />
 Github Profile : https://github.com/Sharanya-Sahyadri-ECE <br />
-LinkedIN Profile : https://in.linkedin.com/in/sharanya-p-a-259412258  
+LinkedIN Profile : https://in.linkedin.com/in/sharanya-p-a-259412258
 <br />
 # Task 1
 ## To install the Essential Tools and Set Up Virtual Machine in VirtualBox:
@@ -108,6 +108,74 @@ Converted to Hex: 0x00628333
 ## Step 6: Upload to Your GitHub Repository
 Create a text file (riscv_32bit_instructions.txt) containing the binary and hex representations of the 15 instructions.
 Use Git commands to upload:
+ ![402938188-e82da314-af58-47fb-b68a-eb1a51822319](https://github.com/user-attachments/assets/2c240245-bbec-4256-a0d3-1d325d3bd256)
+
+ # Task 4
+ Steps to perform functional simulation of RISCV
+Download Files: Download the code from the reference github repo.
+
+Set Up Simulation Environment: Install iverlog using commands:
+
+ sudo apt install iverilog
+ sudo apt install gtkwave
+To run and simulate the verilog code, enter the following command:
+
+ iverilog -o iiitb_rv32i iiitb_rv32i.v iiitb_rv32i_tb.v
+ ./iiitb_rv32i
+To see the simulation waveform in GTKWave, enter the following command:
+
+ gtkwave iiitb_rv32i.vcd
+32-bits instruction used in the code:
+![instructions](https://github.com/user-attachments/assets/e04ce9e5-9e4b-41b2-aabf-4a201e2bd05d)
+
+
+Instructions
+
+Analysing the Output Waveform of various instructions that we have covered in this task.
+![add](https://github.com/user-attachments/assets/a8c7e91b-32c1-4fae-b317-15d2f32db6b1)
+
+ADD R6,R1,R2
+ADD R6,R1,R2
+
+32 bit instruction:32'h02208300
+![sub1](https://github.com/user-attachments/assets/78a25b86-6cb2-464d-8f3a-82358e88a8db)
+
+SUB R7,R1,R2
+SUB R7,R1,R2
+
+32 bit instruction:32'h02209380
+![and](https://github.com/user-attachments/assets/f523d7ac-34f2-4078-8932-e4a5e4917a27)
+
+And R8,R1,R3
+And R8,R1,R3
+
+32 bit instruction:32'h0230a400
+
+
+OR R9,R2,R5
+OR R9,R2,R5
+
+32 bit instruction:32'h02513480
+
+XOR R10,R1,R4
+XOR R10,R1,R4
+
+32 bit instruction:32'h0240c500
+
+SLT R11,R2,R4
+SLT R11,R2,R4
+
+32 bit instruction:32'h02415580
+
+ADDI R12,R4,5
+ADDI R12,R4,5
+
+32 bit instruction:32'h00520600
+![beq](https://github.com/user-attachments/assets/908a7b85-90d6-4bca-847a-acc15f16f386)
+BEQ R0,R0,15
+BEQ R0,R0,15
+
+32 bit instruction:32'h00f00002
 
 git clone <your-repo-link>  <br>
 cd <your-repo>
