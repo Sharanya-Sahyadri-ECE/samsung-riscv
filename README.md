@@ -9,29 +9,172 @@ LinkedIN Profile : https://in.linkedin.com/in/sharanya-p-a-259412258
 <br />
 
 # Task 1
-## To install the Essential Tools and Set Up Virtual Machine in VirtualBox:
-To install the essential tools and set up a virtual machine in VirtualBox, first, install VirtualBox-7.1.4-165100-Win.exe and riscv_workshop.vdi. After installation, open VirtualBox and click "New" to create a virtual machine. Select Linux as the operating system and choose Ubuntu 18.04 (64-bit) as the version. Allocate the required memory, then select "Use an existing virtual hard disk file". Browse to the location of the unzipped VDI file, select it, and proceed with the setup.
-### Launch the Virtual Machine :
-Once the virtual machine is created, select it and click "start" to boot up the VDI file with the operating system and software.
+# Virtual Machine Setup Guide
+
+## Prerequisites
+Before setting up a virtual machine in VirtualBox, ensure that you have the following files downloaded:
+- **VirtualBox Installer**: `VirtualBox-7.1.4-165100-Win.exe`
+- **Virtual Disk Image (VDI) File**: `riscv_workshop.vdi`
+
+## Installation Steps
+### Step 1: Install VirtualBox
+1. Run `VirtualBox-7.1.4-165100-Win.exe` to start the installation.
+2. Follow the on-screen instructions to complete the installation process.
+3. Once installed, launch VirtualBox.
+
+### Step 2: Create a Virtual Machine
+1. Open VirtualBox and click on the **New** button.
+2. Provide a name for the virtual machine (e.g., `RISC-V VM`).
+3. Select **Linux** as the operating system.
+4. Choose **Ubuntu (64-bit) 18.04** as the version.
+5. Click **Next** to proceed.
+
+### Step 3: Allocate System Resources
+1. Allocate the required memory (recommended: at least **2048 MB** or **2 GB** RAM).
+2. Click **Next**.
+
+### Step 4: Attach the Existing Virtual Hard Disk
+1. Select **Use an existing virtual hard disk file**.
+2. Click **Browse**, navigate to the folder where `riscv_workshop.vdi` is stored, and select it.
+3. Click **Create** to finalize the virtual machine setup.
+
+## Launching the Virtual Machine
+1. In VirtualBox, select the newly created virtual machine from the list.
+2. Click **Start** to boot up the VDI file.
+3. The virtual machine will load the pre-installed Ubuntu 18.04 environment along with necessary tools and software.
+
+## Additional Configuration (Optional)
+- If needed, adjust CPU allocation in **Settings → System → Processor**.
+- Configure network settings under **Settings → Network**.
+- Install Guest Additions for better performance (**Devices → Insert Guest Additions CD Image**).
+
+## Troubleshooting
+### Issue: Virtual Machine Fails to Start
+- Ensure that **VT-x/AMD-V virtualization** is enabled in BIOS.
+- Try increasing memory or CPU allocation in VirtualBox settings.
+
+### Issue: Network Not Working
+- Check if the **Network Adapter** is set to `Bridged` or `NAT` in **Settings → Network**.
+
+## Conclusion
+After completing the setup, you will have a fully functional Ubuntu 18.04 virtual machine running in VirtualBox. You can now start using it for RISC-V development or any other required tasks.
+
 ![Screenshot 2025-01-06 091422](https://github.com/user-attachments/assets/8ce5fabf-94dc-4526-afa5-b25b9b9bec0f)
-## Writing, Compiling, and Running a Parameterized C Program Locally
-In this task, a C program (sum1ton.c) is created to calculate the sum of numbers from 1 to a user-specified value n. The program utilizes a loop for computation and dynamically accepts input from the user during execution. It is compiled using the standard GCC compiler on a local Ubuntu system. Upon successful compilation, the program prompts the user for n, computes the sum, and displays the result. This task demonstrates the development and execution of parameterized C programs on a host system.
-Steps:
-1. Use a text editor (e.g., leafpad) to write a C program that computes the sum from 1 to n based on user input.
-2. Compile the program using the GCC compiler.
-3. Run the compiled binary (./a.out), enter a value for n, and view the computed sum.
+
+# Writing, Compiling, and Running a Parameterized C Program Locally
+
+## Overview
+In this task, a C program (`sum1ton.c`) is created to calculate the sum of numbers from `1` to a user-specified value `n`. The program utilizes a loop for computation and dynamically accepts input from the user during execution. It is compiled using the standard GCC compiler on a local Ubuntu system. Upon successful compilation, the program prompts the user for `n`, computes the sum, and displays the result.
+
+## Steps
+
+### Step 1: Write the C Program
+Use a text editor such as `leafpad`, `nano`, or `vim` to create a C program named `sum1ton.c`.
+
+Example program (`sum1ton.c`):
+```c
+#include <stdio.h>
+
+int main() {
+    int n, sum = 0;
+    printf("Enter a positive integer: ");
+    scanf("%d", &n);
+    
+    for (int i = 1; i <= n; i++) {
+        sum += i;
+    }
+    
+    printf("Sum from 1 to %d is %d\n", n, sum);
+    return 0;
+}
+```
+
+### Step 2: Compile the Program
+Use the GCC compiler to compile the program:
+```sh
+gcc sum1ton.c -o sum1ton
+```
+
+If there are no errors, this will generate an executable file named `sum1ton`.
+
+### Step 3: Run the Program
+Execute the compiled binary:
+```sh
+./sum1ton
+```
+
+### Step 4: Enter Input and View Output
+- The program will prompt for `n`.
+- Enter a positive integer.
+- The program will compute and display the sum from `1` to `n`.
+
+Example run:
+```
+Enter a positive integer: 5
+Sum from 1 to 5 is 15
+```
+
+## Conclusion
+This task demonstrates the creation, compilation, and execution of a parameterized C program on a local Ubuntu system. By following these steps, users can develop and test simple interactive C programs efficiently.
+
 The sample program is provided in sum1ton.c.
 
 ![screenshot](https://github.com/user-attachments/assets/0228d67e-0d82-4530-8159-c5cb614cf1a7)
 
 The task involves creating a simple C program (sum1ton.c) that computes the sum of numbers from 1 to 100.
 
-## Compiling and Optimizing a Parameterized C Program for RISC-V Architecture
-In this task, a C program (sum1ton.c) is developed to compute the sum of numbers from 1 to a user-defined value n. The program employs a loop for calculation and prompts the user to enter n. It is then compiled using a RISC-V cross-compiler (riscv64-unknown-elf-gcc) with optimization flags (-O1 and -Ofast) and specific parameters to define the ABI (-mabi=lp64) and architecture (-march=rv64i). This ensures that the generated code is optimized for execution in a 64-bit RISC-V environment. The output is an object file (sum1ton.o), which can be executed on a RISC-V-based simulation or hardware platform. This task demonstrates the process of cross-compiling programs for specific hardware architectures.
-Steps:
-1. Write the sum1ton.c program to compute the sum from 1 to n.
-2. Compile the program using the RISC-V GCC compiler with appropriate flags for optimization and architecture.
-3. Verify the creation of the object file (sum1ton.o) by listing its details.
+# Compiling and Optimizing a Parameterized C Program for RISC-V Architecture
+
+## Overview
+In this task, a C program (`sum1ton.c`) is developed to compute the sum of numbers from `1` to a user-defined value `n`. The program employs a loop for calculation and prompts the user to enter `n`. It is then compiled using a RISC-V cross-compiler (`riscv64-unknown-elf-gcc`) with optimization flags (`-O1` and `-Ofast`) and specific parameters to define the ABI (`-mabi=lp64`) and architecture (`-march=rv64i`). This ensures that the generated code is optimized for execution in a 64-bit RISC-V environment. The output is an object file (`sum1ton.o`), which can be executed on a RISC-V-based simulation or hardware platform. This task demonstrates the process of cross-compiling programs for specific hardware architectures.
+
+## Steps
+
+### Step 1: Write the C Program
+Create a C file named `sum1ton.c` that calculates the sum from `1` to `n`.
+
+Example `sum1ton.c`:
+```c
+#include <stdio.h>
+
+int main() {
+    int n, sum = 0;
+    printf("Enter a positive integer: ");
+    scanf("%d", &n);
+    
+    for (int i = 1; i <= n; i++) {
+        sum += i;
+    }
+    
+    printf("Sum from 1 to %d is %d\n", n, sum);
+    return 0;
+}
+```
+
+### Step 2: Compile the Program for RISC-V
+Use the RISC-V GCC compiler with the appropriate optimization and architecture flags:
+```sh
+riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -c sum1ton.c -o sum1ton.o
+```
+For maximum optimization, use:
+```sh
+riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -c sum1ton.c -o sum1ton.o
+```
+
+### Step 3: Verify the Object File
+To check if `sum1ton.o` was successfully created and inspect its details, run:
+```sh
+ls -l sum1ton.o
+```
+To inspect the compiled object file, use:
+```sh
+riscv64-unknown-elf-objdump -d sum1ton.o
+```
+
+## Conclusion
+This guide demonstrates how to cross-compile a parameterized C program for the RISC-V architecture. By using appropriate compiler flags, the generated object file is optimized for execution on a RISC-V-based environment, ensuring efficiency and compatibility.
+
+
 ![Screenshot 2025-01-06 065536](https://github.com/user-attachments/assets/e55d037d-c56d-4757-898d-f03057440132)
 ![401242886-d50cbce4-e138-4033-8d77-8fb5271b125c](https://github.com/user-attachments/assets/f994fca2-f760-4eae-a46b-b09de0c67caf)
 
@@ -487,5 +630,6 @@ git push origin main
 🔹 Add a **seven-segment display** for better output representation.
 🔹 Extend to perform **arithmetic operations (Subtraction, XOR, etc.)**.
 
+![image screenshot full adder riscv](https://github.com/user-attachments/assets/18d97502-abe3-4672-8c8b-986858288149)
 
 
