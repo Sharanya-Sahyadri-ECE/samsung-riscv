@@ -630,6 +630,7 @@ git push origin main
 🔹 Add a **seven-segment display** for better output representation.
 🔹 Extend to perform **arithmetic operations (Subtraction, XOR, etc.)**.
 
-![image screenshot full adder riscv](https://github.com/user-attachments/assets/18d97502-abe3-4672-8c8b-986858288149)
+![Screenshot 2025-02-23 185751](https://github.com/user-attachments/assets/dbafc646-0bb4-4a51-bb6f-70adc61d973c)
+
 
 
