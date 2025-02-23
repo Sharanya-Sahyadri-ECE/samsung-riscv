@@ -183,3 +183,80 @@ echo "Instruction - 32-bit Binary - Hex" > riscv_32bit_instructions.txt
 git add riscv_32bit_instructions.txt
 git commit -m "Added 32-bit RISC-V instruction encoding"
 git push origin main
+**# Steps to Perform Functional Simulation of RISC-V**
+
+## 1. Download Files
+Download the code from the reference GitHub repository using:
+```sh
+git clone <your-repo-link>
+cd <your-repo>
+```
+
+## 2. Set Up Simulation Environment
+Ensure your system has the required tools installed:
+```sh
+sudo apt update
+sudo apt install iverilog gtkwave
+```
+
+## 3. Compile and Simulate the Verilog Code
+Run the following commands to compile and execute:
+```sh
+iverilog -o iiitb_rv32i iiitb_rv32i.v iiitb_rv32i_tb.v
+./iiitb_rv32i
+```
+
+## 4. View Simulation Waveform in GTKWave
+```sh
+gtkwave iiitb_rv32i.vcd
+```
+
+## 5. 32-bit Instructions Used in the Code
+Below are the instructions and their corresponding 32-bit representations:
+
+### Arithmetic Operations
+- **ADD**  
+  **Instruction:** `ADD R6, R1, R2`  
+  **Binary:** `32'h02208300`
+
+- **SUB**  
+  **Instruction:** `SUB R7, R1, R2`  
+  **Binary:** `32'h02209380`
+
+### Logical Operations
+- **AND**  
+  **Instruction:** `AND R8, R1, R3`  
+  **Binary:** `32'h0230a400`
+
+- **OR**  
+  **Instruction:** `OR R9, R2, R5`  
+  **Binary:** `32'h02513480`
+
+- **XOR**  
+  **Instruction:** `XOR R10, R1, R4`  
+  **Binary:** `32'h0240c500`
+
+### Comparison Operations
+- **SLT (Set Less Than)**  
+  **Instruction:** `SLT R11, R2, R4`  
+  **Binary:** `32'h02415580`
+
+### Immediate Operations
+- **ADDI (Add Immediate)**  
+  **Instruction:** `ADDI R12, R4, 5`  
+  **Binary:** `32'h00520600`
+
+### Branching Operations
+- **BEQ (Branch If Equal)**  
+  **Instruction:** `BEQ R0, R0, 15`  
+  **Binary:** `32'h00f00002`
+
+## 6. Commit and Push to GitHub Repository
+```sh
+echo "Instruction - 32-bit Binary - Hex" > riscv_32bit_instructions.txt
+git add riscv_32bit_instructions.txt
+git commit -m "Added 32-bit RISC-V instruction encoding"
+git push origin main
+```
+
+
