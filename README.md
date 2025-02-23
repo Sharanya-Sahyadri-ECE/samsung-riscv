@@ -632,5 +632,123 @@ git push origin main
 
 ![Screenshot 2025-02-23 185751](https://github.com/user-attachments/assets/dbafc646-0bb4-4a51-bb6f-70adc61d973c)
 
+# Task 6
+
+# Button-Controlled LED Circuit using Microcontroller
+
+## Overview
+This guide provides step-by-step instructions to set up a button-controlled LED circuit using a microcontroller and a breadboard. This setup allows LEDs to turn on or off based on button inputs.
+
+## Components Required
+- Microcontroller (as shown in the image)
+- Breadboard
+- 2 LEDs (Red and Green)
+- 3 Push Buttons
+- Resistors (1kΩ for pull-down resistors, 220Ω for LEDs)
+- Jumper Wires
+
+## Circuit Connections
+### Microcontroller to LED Connections:
+1. **Red LED:**
+   - Connect the positive (anode) pin of the red LED to **PD2** on the microcontroller.
+   - Connect the negative (cathode) pin to GND via a **220Ω resistor**.
+
+2. **Green LED:**
+   - Connect the positive (anode) pin of the green LED to **PD1** on the microcontroller.
+   - Connect the negative (cathode) pin to GND via a **220Ω resistor**.
+
+### Microcontroller to Button Connections:
+1. **First Button:**
+   - One side connected to **PD3** on the microcontroller.
+   - Other side connected to **GND** via a **1kΩ pull-down resistor**.
+   - Also connected to **5V**.
+
+2. **Second Button:**
+   - One side connected to **PD4** on the microcontroller.
+   - Other side connected to **GND** via a **1kΩ pull-down resistor**.
+   - Also connected to **5V**.
+
+3. **Third Button:**
+   - One side connected to **PD5** on the microcontroller.
+   - Other side connected to **GND** via a **1kΩ pull-down resistor**.
+   - Also connected to **5V**.
+
+## Installation Process
+### Step 1: Install VirtualBox
+1. Download and install Oracle VirtualBox from the official website.
+2. Launch VirtualBox and create a new virtual machine.
+3. Set the OS type as Linux and version as Xubuntu (64-bit).
+4. Allocate **4GB RAM** and **4 CPUs** for optimal performance.
+5. Use an existing virtual hard disk and select the VSDSquadron FPGA Mini VDI file.
+6. Click **Finish** and start the virtual machine.
+
+### Step 2: Set Up FPGA Software
+1. Download the VSDSquadron FPGA Mini (FM) Software.
+2. Unzip the downloaded file and open the project directory.
+3. Open a terminal and navigate to the project folder:
+   ```sh
+   cd VSDSquadron_FM
+   cd blink_led
+   ```
+4. Connect the FPGA board to the computer via USB.
+5. Check USB connection using:
+   ```sh
+   lsusb
+   ```
+
+### Step 3: Compile and Flash the Code
+1. Clean previous builds:
+   ```sh
+   make clean
+   ```
+2. Build the binary:
+   ```sh
+   make build
+   ```
+3. Flash the code to the FPGA:
+   ```sh
+   sudo make flash
+   ```
+4. Observe the LED behavior on the FPGA board.
+
+## Code Implementation (Arduino C-style)
+Upload the following code to the microcontroller to control the LEDs based on button presses:
+```c
+void setup() {
+    pinMode(2, OUTPUT); // Red LED
+    pinMode(1, OUTPUT); // Green LED
+    pinMode(3, INPUT_PULLDOWN); // Button 1
+    pinMode(4, INPUT_PULLDOWN); // Button 2
+    pinMode(5, INPUT_PULLDOWN); // Button 3
+}
+
+void loop() {
+    if (digitalRead(3) == HIGH) {
+        digitalWrite(2, HIGH); // Turn on Red LED
+    } else {
+        digitalWrite(2, LOW);
+    }
+
+    if (digitalRead(4) == HIGH) {
+        digitalWrite(1, HIGH); // Turn on Green LED
+    } else {
+        digitalWrite(1, LOW);
+    }
+}
+```
+
+## Steps to Execute
+1. Assemble the circuit on the breadboard as per the given wiring instructions.
+2. Upload the provided code to the microcontroller.
+3. Press the respective buttons to control the LEDs.
+
+## Expected Behavior
+- Pressing the first button turns on the **Red LED**.
+- Pressing the second button turns on the **Green LED**.
+- The third button can be used for additional functionality, like toggling both LEDs together.
+
+## Conclusion
+This simple setup demonstrates how buttons can be used to control LEDs using a microcontroller. The concept can be extended for various embedded system applications, such as controlling multiple devices using digital inputs.
+
 
 
