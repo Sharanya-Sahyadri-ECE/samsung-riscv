@@ -262,3 +262,109 @@ Analysing the Output Waveform of various instructions that we have covered in th
 
 ![beq](https://github.com/user-attachments/assets/908a7b85-90d6-4bca-847a-acc15f16f386)
 
+# Task 5 
+# Smart LED Control Using RISC-V
+
+## 📌 Overview
+This project controls an LED using a push button and a VSD RISC-V board. When the button is pressed, the LED toggles between ON and OFF states. It’s an easy project to understand GPIO input and output operations in RISC-V.
+
+---
+
+## 🛠 Components Required  
+| **Component**         | **Quantity** | **Purpose**                  |
+|----------------------|-------------|------------------------------|
+| **VSD RISC-V Board** | 1           | Microcontroller              |
+| **LED (Any Color)**  | 1           | Visual indication            |
+| **Push Button**      | 1           | Switch to toggle LED         |
+| **330Ω Resistor**    | 1           | Limits current for LED       |
+| **10kΩ Resistor**    | 1           | Pull-down resistor for button |
+| **Breadboard & Wires** | -         | Circuit connections          |
+
+---
+
+## 🔌 Circuit Connections  
+| **Component**      | **Pin on RISC-V Board** | **Function**         |
+|-------------------|----------------------|---------------------|
+| **LED (+)**      | PA0 (Digital Output)  | LED Control        |
+| **LED (-)**      | GND                    | Ground             |
+| **Button One End** | PA1 (Digital Input)  | Button Signal      |
+| **Button Other End** | GND                 | Pull-down Resistor |
+
+---
+
+## 🚀 Setup & Installation  
+
+### **1️⃣ Connect the Components**  
+- Connect **LED anode (+)** to **PA0** and cathode (-) to **GND**.  
+- Connect one end of the **button** to **PA1** and the other end to **GND**.  
+- Use a **10kΩ pull-down resistor** between PA1 and GND.  
+
+### **2️⃣ Install RISC-V Toolchain**  
+```sh
+sudo apt update  
+sudo apt install gcc-riscv64-unknown-elf  
+```
+
+### **3️⃣ Compile the Code**  
+```sh
+riscv64-unknown-elf-gcc -o led_toggle src/led_toggle.c  
+```
+
+### **4️⃣ Run the Simulation (Optional: GTKWave)**  
+```sh
+iverilog -o led_sim src/led_toggle.v src/led_toggle_tb.v  
+vvp led_sim  
+gtkwave led_wave.vcd  
+```
+
+---
+
+## 📝 Code Snippet (C for VSD RISC-V Board)  
+```c
+#include <vsd_gpio.h>
+#include <vsd_delay.h>
+
+#define LED_PIN 0
+#define BUTTON_PIN 1
+
+void setup() {
+    gpio_mode(LED_PIN, OUTPUT);
+    gpio_mode(BUTTON_PIN, INPUT);
+}
+
+void loop() {
+    if (gpio_read(BUTTON_PIN) == HIGH) {
+        gpio_toggle(LED_PIN);  // Toggle LED state
+        delay(300);  // Debounce delay
+    }
+}
+```
+
+---
+
+## 🔗 GitHub Setup & Push  
+```sh
+git clone https://github.com/yourusername/RISC-V_LED_Control.git  
+cd RISC-V_LED_Control  
+mkdir src  
+touch src/led_toggle.c  
+echo "# RISC-V LED Control" > README.md  
+git add .  
+git commit -m "Initial Commit - LED Toggle Code"  
+git push origin main  
+```
+
+---
+
+## 🎯 Features & Benefits  
+✅ **Simple project for GPIO practice**  
+✅ **Teaches button debounce and state toggling**  
+✅ **Can be expanded into LED patterns or PWM brightness control**  
+
+---
+
+## 💡 Future Improvements  
+🔹 Add **multiple LEDs** to display patterns.  
+🔹 Control LED brightness using **PWM**.  
+🔹 Add a **buzzer** for sound-based feedback.  
+
