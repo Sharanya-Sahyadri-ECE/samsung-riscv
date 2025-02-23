@@ -60,129 +60,122 @@ The following shows the screenshots of optimizations
 
 
 # Task 3
+**# Steps to Perform Functional Simulation of RISC-V**
+
 ## Step 1: Review RISC-V Documentation
-Open the RISC-V software documentation (provided link) and read about the instruction types:
-R-type: Register-Register operations<br>
-I-type: Immediate operations & Load instructionss<br>
-S-type: Store instructionss<br>
-B-type: Branch instructionss<br>
-U-type: Upper immediate instructionss<br>
-J-type: Jump instructionss<br>
+Open the RISC-V software documentation (provided link) and review the different instruction types:
+
+- **R-type:** Register-Register operations
+- **I-type:** Immediate operations & Load instructions
+- **S-type:** Store instructions
+- **B-type:** Branch instructions
+- **U-type:** Upper immediate instructions
+- **J-type:** Jump instructions
+
+Understanding these instruction types will help in analyzing and debugging the application code.
+
 ## Step 2: Explore the Sample GitHub Repository
-Open the Sample Repo and examine the visual representation of instruction decoding.
+Visit the Sample Repository and examine the visual representation of instruction decoding. This will help in understanding:
 
-Understand how instructions are broken down into opcode, funct3, funct7, register fields, and immediate values.
+- How instructions are broken down into their components: **opcode, funct3, funct7, register fields, and immediate values**.
+- The role of different instruction formats in executing various operations within the RISC-V architecture.
+
 ## Step 3: Obtain riscv-objdump of Your Application Code
-Compile your RISC-V application code into an executable using a GCC toolchain:
-
+To analyze your RISC-V application, compile it using the GCC toolchain:
+```sh
 riscv64-unknown-elf-gcc -o my_program my_program.c
-Generate the disassembly output using riscv-objdump:
+```
+This will generate an executable `my_program`.
 
+### Generate the Disassembly Output
+To view the disassembled instructions:
+```sh
 riscv64-unknown-elf-objdump -d my_program > disassembly.txt
+```
 
-Open disassembly.txt and extract 15 unique instructions.
+### Extract and Analyze Instructions
+- Open `disassembly.txt`
+- Identify and extract **15 unique instructions**
+- Categorize them into their respective instruction types (**R, I, S, B, U, J**)
+- Compare the binary representations with the documented encoding schemes
 
-## Step 4: Identify the Instruction Type for Each Instruction
-Determine each extracted instruction's type (R, I, S, B, U, or J).
-You can use the instruction format reference from Step 1.
-## Step 5: Convert Instructions to 32-bit Binary Patterns
-For each instruction:
-
-Identify the opcode, funct3, funct7, source/destination registers, and immediate values.
-Construct the binary format based on the instruction type.
-Convert the binary format into a 32-bit hexadecimal representation.
-Example:
-Instruction: add x5, x6, x7 (R-type)
-
-Opcode: 0110011
-Funct3: 000
-Funct7: 0000000
-Registers: rd = 5, rs1 = 6, rs2 = 7
-32-bit encoding:
-
-
-funct7   rs2   rs1   funct3  rd    opcode  
-0000000  00111 00110 000     00101 0110011  
-
-Converted to Hex: 0x00628333
-## Step 6: Upload to Your GitHub Repository
-Create a text file (riscv_32bit_instructions.txt) containing the binary and hex representations of the 15 instructions.
-Use Git commands to upload:
- ![402938188-e82da314-af58-47fb-b68a-eb1a51822319](https://github.com/user-attachments/assets/2c240245-bbec-4256-a0d3-1d325d3bd256)
-
- # Task 4
- Steps to perform functional simulation of RISCV
-Download Files: Download the code from the reference github repo.
-
-Set Up Simulation Environment: Install iverlog using commands:
-
- sudo apt install iverilog
- sudo apt install gtkwave
-To run and simulate the verilog code, enter the following command:
-
- iverilog -o iiitb_rv32i iiitb_rv32i.v iiitb_rv32i_tb.v
- ./iiitb_rv32i
-To see the simulation waveform in GTKWave, enter the following command:
-
- gtkwave iiitb_rv32i.vcd
-32-bits instruction used in the code:
-![instructions](https://github.com/user-attachments/assets/e04ce9e5-9e4b-41b2-aabf-4a201e2bd05d)
-
-
-Instructions
-
-Analysing the Output Waveform of various instructions that we have covered in this task.
-![add](https://github.com/user-attachments/assets/a8c7e91b-32c1-4fae-b317-15d2f32db6b1)
-
-ADD R6,R1,R2
-ADD R6,R1,R2
-
-32 bit instruction:32'h02208300
-![sub1](https://github.com/user-attachments/assets/78a25b86-6cb2-464d-8f3a-82358e88a8db)
-
-SUB R7,R1,R2
-SUB R7,R1,R2
-
-32 bit instruction:32'h02209380
-![and](https://github.com/user-attachments/assets/f523d7ac-34f2-4078-8932-e4a5e4917a27)
-
-And R8,R1,R3
-And R8,R1,R3
-
-32 bit instruction:32'h0230a400
-
-
-OR R9,R2,R5
-OR R9,R2,R5
-
-32 bit instruction:32'h02513480
-
-XOR R10,R1,R4
-XOR R10,R1,R4
-
-32 bit instruction:32'h0240c500
-
-SLT R11,R2,R4
-SLT R11,R2,R4
-
-32 bit instruction:32'h02415580
-
-ADDI R12,R4,5
-ADDI R12,R4,5
-
-32 bit instruction:32'h00520600
-![beq](https://github.com/user-attachments/assets/908a7b85-90d6-4bca-847a-acc15f16f386)
-BEQ R0,R0,15
-BEQ R0,R0,15
-
-32 bit instruction:32'h00f00002
-
-git clone <your-repo-link>  <br>
+## Step 4: Functional Simulation Setup
+### Download Files
+Download the code from the reference GitHub repository using:
+```sh
+git clone <your-repo-link>
 cd <your-repo>
+```
+
+### Install Required Tools
+Ensure your system has the necessary tools installed:
+```sh
+sudo apt update
+sudo apt install iverilog gtkwave
+```
+
+### Compile and Simulate Verilog Code
+```sh
+iverilog -o iiitb_rv32i iiitb_rv32i.v iiitb_rv32i_tb.v
+./iiitb_rv32i
+```
+
+### View Simulation Waveform in GTKWave
+```sh
+gtkwave iiitb_rv32i.vcd
+```
+
+## Step 5: 32-bit Instructions Used in the Code
+Below are some instructions and their corresponding 32-bit representations:
+
+### Arithmetic Operations
+- **ADD**  
+  **Instruction:** `ADD R6, R1, R2`  
+  **Binary:** `32'h02208300`
+
+- **SUB**  
+  **Instruction:** `SUB R7, R1, R2`  
+  **Binary:** `32'h02209380`
+
+### Logical Operations
+- **AND**  
+  **Instruction:** `AND R8, R1, R3`  
+  **Binary:** `32'h0230a400`
+
+- **OR**  
+  **Instruction:** `OR R9, R2, R5`  
+  **Binary:** `32'h02513480`
+
+- **XOR**  
+  **Instruction:** `XOR R10, R1, R4`  
+  **Binary:** `32'h0240c500`
+
+### Comparison Operations
+- **SLT (Set Less Than)**  
+  **Instruction:** `SLT R11, R2, R4`  
+  **Binary:** `32'h02415580`
+
+### Immediate Operations
+- **ADDI (Add Immediate)**  
+  **Instruction:** `ADDI R12, R4, 5`  
+  **Binary:** `32'h00520600`
+
+### Branching Operations
+- **BEQ (Branch If Equal)**  
+  **Instruction:** `BEQ R0, R0, 15`  
+  **Binary:** `32'h00f00002`
+
+## Step 6: Commit and Push to GitHub Repository
+```sh
 echo "Instruction - 32-bit Binary - Hex" > riscv_32bit_instructions.txt
 git add riscv_32bit_instructions.txt
 git commit -m "Added 32-bit RISC-V instruction encoding"
 git push origin main
+```
+ ![402938188-e82da314-af58-47fb-b68a-eb1a51822319](https://github.com/user-attachments/assets/2c240245-bbec-4256-a0d3-1d325d3bd256)
+
+ # Task 4
+ 
 **# Steps to Perform Functional Simulation of RISC-V**
 
 ## 1. Download Files
@@ -258,5 +251,14 @@ git add riscv_32bit_instructions.txt
 git commit -m "Added 32-bit RISC-V instruction encoding"
 git push origin main
 ```
+![instructions](https://github.com/user-attachments/assets/e04ce9e5-9e4b-41b2-aabf-4a201e2bd05d)
 
+Analysing the Output Waveform of various instructions that we have covered in this task.
+![add](https://github.com/user-attachments/assets/a8c7e91b-32c1-4fae-b317-15d2f32db6b1)
+
+![sub1](https://github.com/user-attachments/assets/78a25b86-6cb2-464d-8f3a-82358e88a8db)
+
+![and](https://github.com/user-attachments/assets/f523d7ac-34f2-4078-8932-e4a5e4917a27)
+
+![beq](https://github.com/user-attachments/assets/908a7b85-90d6-4bca-847a-acc15f16f386)
 
